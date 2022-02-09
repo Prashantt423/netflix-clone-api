@@ -11,6 +11,7 @@ import ChatBubbleOutline from '@mui/icons-material/ChatBubbleOutline';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import TrendingUp from '@mui/icons-material/TrendingUp';
 import ReportIcon from '@mui/icons-material/Report';
+import { NavLink } from 'react-router-dom';
 export default function Sidebar() {
   return (
     <div className='dashBsideBar'>
@@ -18,10 +19,12 @@ export default function Sidebar() {
         <div className='dashBsideBarMenu'>
           <h3 className='dashBsideBarMenuTitle'>Dashboard</h3>
           <ul className='dashBsideBarMenuList'>
-            <li className='dashBsideBarMenuListItems active'>
-              <LineStyleIcon className='dashBsideBarMenuListItemsIcon' />
-              Home
-            </li>
+            <NavLink className='dashBSideBarLink' to='/dashboard'>
+              <li className='dashBsideBarMenuListItems'>
+                <LineStyleIcon className='dashBsideBarMenuListItemsIcon' />
+                Home
+              </li>
+            </NavLink>
             <li className='dashBsideBarMenuListItems'>
               <Timeline className='dashBsideBarMenuListItemsIcon' />
               Analytics
@@ -35,14 +38,19 @@ export default function Sidebar() {
         <div className='dashBsideBarMenu'>
           <h3 className='dashBsideBarMenuTitle'>Quick Menu</h3>
           <ul className='dashBsideBarMenuList'>
-            <li className='dashBsideBarMenuListItems'>
-              <PermIdentity className='dashBsideBarMenuListItemsIcon' />
-              Users
-            </li>
-            <li className='dashBsideBarMenuListItems'>
-              <Storefront className='dashBsideBarMenuListItemsIcon' />
-              Products
-            </li>
+            <NavLink className='dashBSideBarLink' to='/dashboard/users'>
+              <li className='dashBsideBarMenuListItems'>
+                <PermIdentity className='dashBsideBarMenuListItemsIcon' />
+                Users
+              </li>
+            </NavLink>
+
+            <NavLink className='dashBSideBarLink' to='/dashboard/products'>
+              <li className='dashBsideBarMenuListItems'>
+                <Storefront className='dashBsideBarMenuListItemsIcon' />
+                Products
+              </li>
+            </NavLink>
             <li className='dashBsideBarMenuListItems'>
               <AttachMoney className='dashBsideBarMenuListItemsIcon' />
               Transactions

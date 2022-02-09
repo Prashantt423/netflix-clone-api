@@ -16,9 +16,11 @@
       }
       .dashBsideBarMenuList {
         padding-top: 5px;
-        .active {
-          background-color: rgb(231, 231, 248);
+        .dashBSideBarLink {
+          text-decoration: none;
+          color: #555;
         }
+
         .dashBsideBarMenuListItems {
           cursor: pointer;
           display: flex;
