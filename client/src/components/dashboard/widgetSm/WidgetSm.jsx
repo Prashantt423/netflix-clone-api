@@ -8,10 +8,10 @@ export default function WidgetSm() {
   useEffect(() => {
     const getNewUsers = async () => {
       try {
-        const res = await axios.get('/users?new=true', {
+        const res = await axios.get('/users', {
           headers: {
             token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTZmYzQ2NDk0Mjc3MTYwNDg4MmMxNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNTgzMjMxMSwiZXhwIjoxNjI2MjY0MzExfQ.ATXV-1TTWIGyVBttTQSf0erRWjsgZ8jHQv1ZsUixbng',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDNjNjU5MDY2YjU2NmIxMDUwMDQzOCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NDc0MDQ2OCwiZXhwIjoxNjQ1MTcyNDY4fQ.m03FApkGlmpBIKVq4WHXppYYXUESRrG3xmTYjWWg0ps',
           },
         });
         setNewUsers(res.data);
@@ -25,125 +25,28 @@ export default function WidgetSm() {
     <div className='dashBWidgetSm'>
       <span className='dashBWidgetSmTitle'>New Join Members</span>
       <ul className='dashBWidgetSmList'>
-        <li className='dashBWidgetSmListItem'>
-          <img
-            src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500'
-            alt=''
-            className='dashBWidgetSmListItemImg'
-          />
-          <div className='dashBWidgetSmListItemUser'>
-            <span className='dashBWidgetSmListItemUsername'>Anna Keller</span>
-            <span className='dashBWidgetSmListItemUserTitle'>
-              Software Engineer
-            </span>
-          </div>
-          <button className='dashBWidgetSmListItemButton'>
-            <Visibility className='dashBWidgetSmListItemIcon' />
-            Display
-          </button>
-        </li>
-        <li className='dashBWidgetSmListItem'>
-          <img
-            src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500'
-            alt=''
-            className='dashBWidgetSmListItemImg'
-          />
-          <div className='dashBWidgetSmListItemUser'>
-            <span className='dashBWidgetSmListItemUsername'>Anna Keller</span>
-            <span className='dashBWidgetSmListItemUserTitle'>
-              Software Engineer
-            </span>
-          </div>
-          <button className='dashBWidgetSmListItemButton'>
-            <Visibility className='dashBWidgetSmListItemIcon' />
-            Display
-          </button>
-        </li>
-        <li className='dashBWidgetSmListItem'>
-          <img
-            src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500'
-            alt=''
-            className='dashBWidgetSmListItemImg'
-          />
-          <div className='dashBWidgetSmListItemUser'>
-            <span className='dashBWidgetSmListItemUsername'>Anna Keller</span>
-            <span className='dashBWidgetSmListItemUserTitle'>
-              Software Engineer
-            </span>
-          </div>
-          <button className='dashBWidgetSmListItemButton'>
-            <Visibility className='dashBWidgetSmListItemIcon' />
-            Display
-          </button>
-        </li>
-        <li className='dashBWidgetSmListItem'>
-          <img
-            src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500'
-            alt=''
-            className='dashBWidgetSmListItemImg'
-          />
-          <div className='dashBWidgetSmListItemUser'>
-            <span className='dashBWidgetSmListItemUsername'>Anna Keller</span>
-            <span className='dashBWidgetSmListItemUserTitle'>
-              Software Engineer
-            </span>
-          </div>
-          <button className='dashBWidgetSmListItemButton'>
-            <Visibility className='dashBWidgetSmListItemIcon' />
-            Display
-          </button>
-        </li>
-        <li className='dashBWidgetSmListItem'>
-          <img
-            src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500'
-            alt=''
-            className='dashBWidgetSmListItemImg'
-          />
-          <div className='dashBWidgetSmListItemUser'>
-            <span className='dashBWidgetSmListItemUsername'>Anna Keller</span>
-            <span className='dashBWidgetSmListItemUserTitle'>
-              Software Engineer
-            </span>
-          </div>
-          <button className='dashBWidgetSmListItemButton'>
-            <Visibility className='dashBWidgetSmListItemIcon' />
-            Display
-          </button>
-        </li>
-        <li className='dashBWidgetSmListItem'>
-          <img
-            src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500'
-            alt=''
-            className='dashBWidgetSmListItemImg'
-          />
-          <div className='dashBWidgetSmListItemUser'>
-            <span className='dashBWidgetSmListItemUsername'>Anna Keller</span>
-            <span className='dashBWidgetSmListItemUserTitle'>
-              Software Engineer
-            </span>
-          </div>
-          <button className='dashBWidgetSmListItemButton'>
-            <Visibility className='dashBWidgetSmListItemIcon' />
-            Display
-          </button>
-        </li>
-        <li className='dashBWidgetSmListItem'>
-          <img
-            src='https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500'
-            alt=''
-            className='dashBWidgetSmListItemImg'
-          />
-          <div className='dashBWidgetSmListItemUser'>
-            <span className='dashBWidgetSmListItemUsername'>Anna Keller</span>
-            <span className='dashBWidgetSmListItemUserTitle'>
-              Software Engineer
-            </span>
-          </div>
-          <button className='dashBWidgetSmListItemButton'>
-            <Visibility className='dashBWidgetSmListItemIcon' />
-            Display
-          </button>
-        </li>
+        {newUsers &&
+          newUsers.map((user, i) => (
+            <li key={i} className='dashBWidgetSmListItem'>
+              <img
+                src={
+                  user.profilePic ||
+                  'https://pbs.twimg.com/media/D8tCa48VsAA4lxn.jpg'
+                }
+                alt=''
+                className='dashBWidgetSmListItemImg'
+              />
+              <div className='dashBWidgetSmListItemUser'>
+                <span className='dashBWidgetSmListItemUsername'>
+                  {user.username}
+                </span>
+              </div>
+              <button className='dashBWidgetSmListItemButton'>
+                <Visibility className='dashBWidgetSmListItemIcon' />
+                Display
+              </button>
+            </li>
+          ))}
       </ul>
     </div>
   );

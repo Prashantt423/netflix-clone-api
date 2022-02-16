@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './product.scss';
 import Chart from '../../../components/dashboard/chart/Chart';
 import { productData } from '../../../dummyData';
 import Publish from '@mui/icons-material/Publish';
 
-export default function Product() {
+export default function Product(props) {
+  const location = useLocation();
+  const movie = location.movieProps;
+  console.log(location);
+  console.log(movie);
+  console.log(props.location);
   return (
     <div className='product'>
       <div className='productTitleContainer'>

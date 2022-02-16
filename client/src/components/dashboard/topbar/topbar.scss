@@ -17,6 +17,27 @@
     justify-content: space-between;
     padding: 10px;
     .dashBtopBarRight {
+      .settings {
+        &:hover {
+          cursor: pointer;
+          .options {
+            display: flex;
+          }
+        }
+      }
+      .options {
+        display: none;
+        flex-direction: column;
+        color: white;
+        background-color: var(--main-color);
+        position: absolute;
+        top: 2em;
+        right: 2em;
+        border-radius: 5px;
+        span {
+          margin: 0.5em;
+        }
+      }
       .dashBtopBarRightIcons {
         position: relative;
         .dashBtopBarRightIconsBadge {

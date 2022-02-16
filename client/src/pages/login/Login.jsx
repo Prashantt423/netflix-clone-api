@@ -1,6 +1,19 @@
+import { useContext, useRef } from 'react';
 import './login.scss';
+import { login } from '../../contextApi/authContext/apiCalls';
+import { AuthContext } from '../../contextApi/authContext/AuthContext';
 
 export default function Login() {
+  const { dispatch } = useContext(AuthContext);
+  const email = useRef();
+  const password = useRef();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
+  };
   return (
     <div className='login'>
       <div className='top'>
@@ -13,11 +26,17 @@ export default function Login() {
         </div>
       </div>
       <div className='container'>
-        <form>
+        <form
+          onSubmit={(e) => {
+            handleLogin(e);
+          }}
+        >
           <h1>Sign In</h1>
-          <input type='email' placeholder='Email or phone number' />
-          <input type='password' placeholder='Password' />
-          <button className='loginButton'>Sign In</button>
+          <input ref={email} type='email' placeholder='Email or phone number' />
+          <input ref={password} type='password' placeholder='Password' />
+          <button className='loginButton' type='submit'>
+            Sign In
+          </button>
           <span>
             New to Netflix? <b>Sign up now.</b>
           </span>

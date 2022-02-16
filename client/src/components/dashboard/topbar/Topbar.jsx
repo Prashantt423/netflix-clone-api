@@ -2,8 +2,15 @@ import './topbar.scss';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import LanguageIcon from '@mui/icons-material/Language';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Logout } from '../../../contextApi/authContext/apiCalls';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contextApi/authContext/AuthContext';
 
 export default function Topbar() {
+  const { dispatch, dashBuser } = useContext(AuthContext);
+  const handleLogOut = async () => {
+    Logout(dispatch);
+  };
   return (
     <div className='dashBtopBar'>
       <div className='dashBtopBarWrapper'>
@@ -17,7 +24,15 @@ export default function Topbar() {
             <LanguageIcon />
             <span className='dashBtopBarRightIconsBadge'>2</span>
           </div>
-          <SettingsIcon />
+          <div className='settings'>
+            <SettingsIcon className='settingsIcon' />
+            <div className='options'>
+              <span>{dashBuser?.username}</span>
+              <span>Settings</span>
+
+              <span onClick={handleLogOut}>Logout</span>
+            </div>
+          </div>
 
           <img
             className='dashBtopBarRightProfilePic'

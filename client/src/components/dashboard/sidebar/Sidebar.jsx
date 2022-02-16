@@ -2,7 +2,7 @@ import './sidebar.scss';
 import LineStyleIcon from '@mui/icons-material/LineStyle';
 import Timeline from '@mui/icons-material/Timeline';
 import PermIdentity from '@mui/icons-material/PermIdentity';
-import Storefront from '@mui/icons-material/Storefront';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AttachMoney from '@mui/icons-material/AttachMoney';
 import BarChart from '@mui/icons-material/BarChart';
 import MailOutline from '@mui/icons-material/MailOutline';
@@ -12,9 +12,12 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import TrendingUp from '@mui/icons-material/TrendingUp';
 import ReportIcon from '@mui/icons-material/Report';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contextApi/authContext/AuthContext';
 export default function Sidebar() {
+  const { dashBuser } = useContext(AuthContext);
   return (
-    <div className='dashBsideBar'>
+    <div style={{ width: !dashBuser ? 0 : '' }} className='dashBsideBar'>
       <div className='dashBsideBarWrapper'>
         <div className='dashBsideBarMenu'>
           <h3 className='dashBsideBarMenuTitle'>Dashboard</h3>
@@ -45,10 +48,10 @@ export default function Sidebar() {
               </li>
             </NavLink>
 
-            <NavLink className='dashBSideBarLink' to='/dashboard/products'>
+            <NavLink className='dashBSideBarLink' to='/dashboard/movies'>
               <li className='dashBsideBarMenuListItems'>
-                <Storefront className='dashBsideBarMenuListItemsIcon' />
-                Products
+                <PlayArrowIcon className='dashBsideBarMenuListItemsIcon' />
+                Movies
               </li>
             </NavLink>
             <li className='dashBsideBarMenuListItems'>
