@@ -43,7 +43,12 @@ router.get('/', verify, async (req, res) => {
       if (genreQuery) {
         list = await List.aggregate([
           { $sample: { size: 10 } },
-          { $match: { type: typeQuery, genre: genreQuery } },
+          {
+            $match: {
+              type: typeQuery,
+              genre: genreQuery,
+            },
+          },
         ]);
       } else {
         list = await List.aggregate([
@@ -57,6 +62,18 @@ router.get('/', verify, async (req, res) => {
     res.status(200).json(list);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+// get one
+router.get('/:id', verify, async (req, res) => {
+  try {
+    const list = await List.findById(req.params.id);
+    if (list) {
+      res.status(200).json(list);
+    }
+  } catch (e) {
+    res.status(500).json(e);
   }
 });
 

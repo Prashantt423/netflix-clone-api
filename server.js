@@ -10,6 +10,7 @@ const UserRoute = require('./routes/users');
 const MovieRoute = require('./routes/movies');
 const ListRoute = require('./routes/lists');
 dotenv.config();
+
 // middleware
 app.use(express.json());
 app.use(helmet());
@@ -33,6 +34,10 @@ app.get('/', (req, res) => {
   res.status(404).json({ msg: 'failed' });
 });
 
-app.listen(8800, () => {
+let port = process.env.PORT;
+if (port == null || port == '') {
+  port = 8800;
+}
+app.listen(port, () => {
   console.log('server is running..');
 });
