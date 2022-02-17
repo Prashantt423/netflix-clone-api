@@ -52,7 +52,6 @@ export default function ProductList() {
             <Link
               to={{
                 pathname: '/dashboard/movie/view/' + params.row._id,
-                state: 'Hi there',
               }}
             >
               <button className='productListEdit'>Edit</button>
@@ -68,7 +67,6 @@ export default function ProductList() {
   ];
   return (
     <div className='productList'>
-      (
       <DataGrid
         rows={movies}
         disableSelectionOnClick
@@ -77,7 +75,6 @@ export default function ProductList() {
         checkboxSelection
         getRowId={(r) => r._id}
       />
-      )
     </div>
   );
 }

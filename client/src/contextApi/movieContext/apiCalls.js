@@ -9,8 +9,27 @@ import {
   getMoviesFailure,
   getMoviesStart,
   getMoviesSuccess,
+  getOneMovieStart,
+  getOneMovieSuccess,
+  getOneMovieFailure,
 } from './MovieActions';
 
+// Get one movie by id
+export const getOneMovie = async (id, dispatch) => {
+  dispatch(getOneMovieStart());
+  try {
+    const res = await axios.get(`/movies/find/${id}`, {
+      headers: {
+        token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken,
+      },
+    });
+    dispatch(getOneMovieSuccess(res.data));
+  } catch (err) {
+    dispatch(getOneMovieFailure());
+  }
+};
+
+// Get all Movies
 export const getMovies = async (dispatch) => {
   dispatch(getMoviesStart());
   try {

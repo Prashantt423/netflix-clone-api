@@ -17,6 +17,8 @@ import NewProduct from '../newProduct/NewProduct';
 import Login from '../Login/Login';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contextApi/authContext/AuthContext';
+import ListList from '../listList/ListList';
+import MovieList from '../list/MovieList';
 export default function DashBoardHome() {
   const { user } = useContext(AuthContext);
   return (
@@ -36,6 +38,9 @@ export default function DashBoardHome() {
           <Route path='/movies' element={<ProductList />} />
           <Route path='/movie/view/:productId' element={<Product />} />
           <Route path='/movie/newmovie' element={<NewProduct />} />
+          <Route exact path='/lists/:id' element={<MovieList />} />
+          <Route exact path='/movies/lists' element={<ListList />} />
+          <Route exact path='/movies/lists/newlist' element={<ListList />} />
         </Routes>
       </div>
     </div>

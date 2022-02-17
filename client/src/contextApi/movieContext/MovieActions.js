@@ -10,6 +10,18 @@ export const getMoviesSuccess = (movies) => ({
 export const getMoviesFailure = () => ({
   type: 'GET_MOVIES_FAILURE',
 });
+export const getOneMovieStart = () => ({
+  type: 'GET_ONE_MOVIE_START',
+});
+
+export const getOneMovieSuccess = (movies) => ({
+  type: 'GET_ONE_MOVIE_SUCCESS',
+  payload: movies,
+});
+
+export const getOneMovieFailure = () => ({
+  type: 'GET_ONE_MOVIE_FAILURE',
+});
 
 export const createMovieStart = () => ({
   type: 'CREATE_MOVIE_START',

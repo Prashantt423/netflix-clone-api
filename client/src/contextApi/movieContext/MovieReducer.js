@@ -18,6 +18,24 @@ const MovieReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case 'GET_ONE_MOVIE_START':
+      return {
+        movie: [],
+        isFetching: true,
+        error: false,
+      };
+    case 'GET_ONE_MOVIE_SUCCESS':
+      return {
+        movie: action.payload,
+        isFetching: false,
+        error: false,
+      };
+    case 'GET_ONE_MOVIE_FAILURE':
+      return {
+        movie: [],
+        isFetching: false,
+        error: true,
+      };
     case 'CREATE_MOVIE_START':
       return {
         ...state,

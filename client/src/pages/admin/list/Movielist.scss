@@ -58,21 +58,17 @@
 }
 
 .productInfoItem {
-  width: 100%;
+  width: 150px;
   display: flex;
   justify-content: space-between;
-  margin: 0.4em;
 }
 
 .productInfoKey {
-  width: 20%;
+  margin-right: 20px;
 }
 
 .productInfoValue {
   font-weight: 300;
-  width: 100%;
-  margin-right: auto;
-  text-orientation: sideways-right;
 }
 
 .productBottom {

@@ -3,7 +3,7 @@ import LineStyleIcon from '@mui/icons-material/LineStyle';
 import Timeline from '@mui/icons-material/Timeline';
 import PermIdentity from '@mui/icons-material/PermIdentity';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import AttachMoney from '@mui/icons-material/AttachMoney';
+// import AttachMoney from '@mui/icons-material/AttachMoney';
 import BarChart from '@mui/icons-material/BarChart';
 import MailOutline from '@mui/icons-material/MailOutline';
 import DynamicFeed from '@mui/icons-material/DynamicFeed';
@@ -14,6 +14,7 @@ import ReportIcon from '@mui/icons-material/Report';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contextApi/authContext/AuthContext';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 export default function Sidebar() {
   const { dashBuser } = useContext(AuthContext);
   return (
@@ -54,10 +55,12 @@ export default function Sidebar() {
                 Movies
               </li>
             </NavLink>
-            <li className='dashBsideBarMenuListItems'>
-              <AttachMoney className='dashBsideBarMenuListItemsIcon' />
-              Transactions
-            </li>
+            <NavLink to='/dashboard/movies/lists' className='dashBSideBarLink'>
+              <li className='dashBsideBarMenuListItems'>
+                <FormatListBulletedIcon className='dashBsideBarMenuListItemsIcon' />
+                Lists
+              </li>
+            </NavLink>
             <li className='dashBsideBarMenuListItems'>
               <BarChart className='dashBsideBarMenuListItemsIcon' />
               Reports
