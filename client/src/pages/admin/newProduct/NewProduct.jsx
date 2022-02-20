@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 export default function NewProduct() {
   const [movie, setMovie] = useState(null);
   const [img, setImg] = useState(null);
@@ -19,6 +20,7 @@ export default function NewProduct() {
   const { dispatch } = useContext(MovieContext);
   const [progressPercentage, setProgressPercentage] = useState(0);
   const [showBox, setShowBox] = useState(false);
+  const navigate = useNavigate();
   function LinearProgressWithLabel(props) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -79,6 +81,7 @@ export default function NewProduct() {
   console.log(movie);
   const handleCreate = () => {
     createMovie(movie, dispatch);
+    navigate('/dashboard/movies');
   };
   return (
     <div className='newProduct'>

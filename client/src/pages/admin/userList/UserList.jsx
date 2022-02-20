@@ -1,12 +1,20 @@
 import './userList.scss';
 import { DataGrid } from '@mui/x-data-grid';
-import { userRows } from '../../../dummyData.js';
-import { useState } from 'react';
+// import { userRows } from '../../../dummyData.js';
+import { useContext, useState } from 'react';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contextApi/authContext/AuthContext';
+import { useEffect } from 'react';
+import { getAllUsers } from '../../../contextApi/authContext/apiCalls';
 
 export default function UserList() {
-  const [data, setData] = useState(userRows);
+  const { users, dispatch } = useContext(AuthContext);
+  const [data, setData] = useState(null);
+  console.log(users);
+  useEffect(() => {
+    getAllUsers(dispatch);
+  }, [dispatch]);
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };

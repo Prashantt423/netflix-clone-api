@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import './newList.scss';
-import storage from '../../firebase';
-import { createMovie, getMovies } from '../../context/movieContext/apiCalls';
-import { MovieContext } from '../../context/movieContext/MovieContext';
-import { ListContext } from '../../context/listContext/ListContext';
-import { createList } from '../../context/listContext/apiCalls';
-import { useHistory } from 'react-router-dom';
+
+import { getMovies } from '../../../contextApi/movieContext/apiCalls';
+import { MovieContext } from '../../../contextApi/movieContext/MovieContext';
+import { ListContext } from '../../../contextApi/listContext/ListContext';
+import { createList } from '../../../contextApi/listContext/apiCalls';
+import { useNavigate } from 'react-router-dom';
 
 export default function NewList() {
   const [list, setList] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { dispatch } = useContext(ListContext);
   const { movies, dispatch: dispatchMovie } = useContext(MovieContext);
@@ -31,8 +31,9 @@ export default function NewList() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createList(list, dispatch);
-    history.push('/lists');
+    navigate('/dashboard/movies/lists');
   };
+  console.log(list);
 
   return (
     <div className='newProduct'>
@@ -45,7 +46,9 @@ export default function NewList() {
               type='text'
               placeholder='Popular Movies'
               name='title'
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+              }}
             />
           </div>
           <div className='addProductItem'>
@@ -54,12 +57,19 @@ export default function NewList() {
               type='text'
               placeholder='action'
               name='genre'
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+              }}
             />
           </div>
           <div className='addProductItem'>
             <label>Type</label>
-            <select name='type' onChange={handleChange}>
+            <select
+              name='type'
+              onChange={(e) => {
+                handleChange(e);
+              }}
+            >
               <option>Type</option>
               <option value='movie'>Movie</option>
               <option value='series'>Series</option>
@@ -70,9 +80,11 @@ export default function NewList() {
           <div className='addProductItem'>
             <label>Content</label>
             <select
-              multiple
+              multiple={true}
               name='content'
-              onChange={handleSelect}
+              onChange={(e) => {
+                handleSelect(e);
+              }}
               style={{ height: '280px' }}
             >
               {movies.map((movie) => (
@@ -83,7 +95,12 @@ export default function NewList() {
             </select>
           </div>
         </div>
-        <button className='addProductButton' onClick={handleSubmit}>
+        <button
+          className='addProductButton'
+          onClick={(e) => {
+            handleSubmit(e);
+          }}
+        >
           Create
         </button>
       </form>

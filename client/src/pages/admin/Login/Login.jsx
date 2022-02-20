@@ -3,14 +3,16 @@ import { login } from '../../../contextApi/authContext/apiCalls.js';
 import { AuthContext } from '../../../contextApi/authContext/AuthContext';
 import './login.scss';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { isFetching, dispatch } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     login({ email, password }, dispatch);
+    navigate('/');
   };
 
   return (

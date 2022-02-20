@@ -4,9 +4,14 @@ import List from '../../components/list/List';
 import Featured from '../../components/featured/Featured';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+
 export const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
+  if (type === 'movies') {
+    type = 'movie';
+  }
+
   useEffect(() => {
     const getRandomLists = async () => {
       try {
@@ -18,7 +23,7 @@ export const Home = ({ type }) => {
             headers: {
               token:
                 'Bearer ' +
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDNjNjU5MDY2YjU2NmIxMDUwMDQzOCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NDc0MDQ2OCwiZXhwIjoxNjQ1MTcyNDY4fQ.m03FApkGlmpBIKVq4WHXppYYXUESRrG3xmTYjWWg0ps',
+                JSON.parse(localStorage.getItem('user'))?.accessToken,
             },
           }
         );
@@ -29,13 +34,15 @@ export const Home = ({ type }) => {
     };
     getRandomLists();
   }, [type, genre]);
+  genre && console.log(genre);
+  lists && lists.reverse();
 
   return (
     <div className='home'>
       <Navbar />
-      <Featured type={type} />
-      {lists?.map((list, i) => (
-        <List lists={list} key={i} />
+      <Featured type={type} setGenre={setGenre} />
+      {lists?.map((list) => (
+        <List lists={list} key={list._id} />
       ))}
     </div>
   );

@@ -2,6 +2,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contextApi/authContext/AuthContext';
 import './featured.scss';
 
@@ -12,14 +13,16 @@ export default function Featured(props) {
     const fetchFeaturedMovie = async () => {
       const res = await axios.get('/movies/random', {
         headers: {
-          token: 'Bearer ' + user.accessToken,
+          token: 'Bearer ' + user?.accessToken,
         },
       });
       setFeaturedMovie(res.data);
     };
     fetchFeaturedMovie();
-  }, []);
-
+  }, [user?.accessToken]);
+  const handleGenre = (e) => {
+    props.setGenre(e.target.value);
+  };
   return (
     <>
       {featuredMovie && (
@@ -27,7 +30,7 @@ export default function Featured(props) {
           {props.type && (
             <div className='category'>
               <span>{props.type === 'movies' ? 'Movies' : 'Series'}</span>
-              <select name='genre' id='genre'>
+              <select name='genre' id='genre' onChange={handleGenre}>
                 <option>Genre</option>
                 <option value='adventure'>Adventure</option>
                 <option value='comedy'>Comedy</option>
@@ -39,7 +42,7 @@ export default function Featured(props) {
                 <option value='sci-fi'>Sci-fi</option>
                 <option value='thriller'>Thriller</option>
                 <option value='western'>Western</option>
-                <option value='animation'>Animation</option>
+                <option value='anime'>Animation</option>
                 <option value='drama'>Drama</option>
                 <option value='documentary'>Documentary</option>
               </select>
@@ -50,10 +53,15 @@ export default function Featured(props) {
             <img src={featuredMovie?.[0].imgTitle} alt='' />
             <span className='desc'>{featuredMovie?.[0].desc}</span>
             <div className='buttons'>
-              <button className='play'>
-                <PlayArrowIcon />
-                <span>Play</span>
-              </button>
+              <NavLink
+                className='link'
+                to={{ pathname: '/watch', search: featuredMovie?.[0].video }}
+              >
+                <button className='play'>
+                  <PlayArrowIcon />
+                  <span>Play</span>
+                </button>
+              </NavLink>
               <button className='more'>
                 <InfoOutlinedIcon />
                 <span>Info</span>

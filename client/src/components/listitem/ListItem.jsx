@@ -17,7 +17,7 @@ export default function ListItem({ item }) {
       try {
         const res = await axios.get('/movies/find/' + item, {
           headers: {
-            token: 'Token ' + user.accessToken,
+            token: 'Token ' + user?.accessToken,
           },
         });
         setMovie(res.data);
@@ -26,7 +26,7 @@ export default function ListItem({ item }) {
       }
     };
     getMovie();
-  }, [item]);
+  }, [item, user?.accessToken]);
 
   const [isHovered, setIsHovered] = useState(false);
   // const [windowDimensions, setWindowDimensions] = useState(
@@ -69,15 +69,19 @@ export default function ListItem({ item }) {
                   <Add className='icon' />
                   <ThumbUpAltOutlined className='icon' />
                   <ThumbDownOutlined className='icon' />
+                  <span className='title'>{movie?.title}</span>
                 </div>
                 <div className='itemInfoTop'>
                   <span>
-                    {parseInt(movie?.limit / 60) +
-                      ' hours' +
-                      ' ' +
-                      (movie?.limit % 60) +
-                      ' minutes'}
+                    {movie.isSeries
+                      ? movie?.limit + ' seasons'
+                      : parseInt(movie?.limit / 60) +
+                        ' hours' +
+                        ' ' +
+                        (movie?.limit % 60) +
+                        ' minutes'}
                   </span>
+
                   <span className='limit'>+16</span>
                   <span>{movie?.year}</span>
                 </div>

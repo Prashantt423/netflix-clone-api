@@ -1,11 +1,19 @@
 import axios from 'axios';
-import { loginFailure, loginStart, loginSuccess, logout } from './AuthActions';
+import {
+  getUsersFailure,
+  getUsersStart,
+  getUsersSuccess,
+  loginFailure,
+  loginStart,
+  loginSuccess,
+  logout,
+} from './AuthActions';
 
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {
     const res = await axios.post('auth/login', user);
-    res.data.isAdmin && dispatch(loginSuccess(res.data));
+    dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
   }
@@ -14,4 +22,15 @@ export const login = async (user, dispatch) => {
 export const Logout = async (dispatch) => {
   dispatch(logout());
   alert('succesfully logged out!');
+};
+
+// get all users
+export const getAllUsers = async (dispatch) => {
+  dispatch(getUsersStart());
+  try {
+    const res = await axios.get('/users');
+    dispatch(getUsersSuccess(res.data));
+  } catch (e) {
+    dispatch(getUsersFailure());
+  }
 };

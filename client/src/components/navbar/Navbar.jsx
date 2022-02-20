@@ -4,7 +4,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useContext, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contextApi/authContext/AuthContext';
 import { Logout } from '../../contextApi/authContext/apiCalls';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
@@ -13,8 +13,10 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHamClicked, setIsHamClicked] = useState(false);
   const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogOut = async () => {
     Logout(dispatch);
+    navigate('/');
   };
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
