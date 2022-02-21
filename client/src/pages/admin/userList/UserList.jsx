@@ -1,20 +1,25 @@
 import './userList.scss';
 import { DataGrid } from '@mui/x-data-grid';
-// import { userRows } from '../../../dummyData.js';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../contextApi/authContext/AuthContext';
 import { useEffect } from 'react';
-import { getAllUsers } from '../../../contextApi/authContext/apiCalls';
+import axios from 'axios';
 
 export default function UserList() {
-  const { users, dispatch } = useContext(AuthContext);
   const [data, setData] = useState(null);
-  console.log(users);
   useEffect(() => {
-    getAllUsers(dispatch);
-  }, [dispatch]);
+    try {
+      const fetchAllUsers = async () => {
+        const res = await axios.get('/users');
+        setData(res.data);
+      };
+      fetchAllUsers();
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+  data && console.log(data);
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
@@ -51,7 +56,7 @@ export default function UserList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={'/dashboard/user/' + params.row.id}>
+            <Link to={'/dashboard/user/' + params.row._id}>
               <button className='userListEdit'>Edit</button>
             </Link>
             <DeleteOutlineOutlinedIcon
@@ -72,6 +77,7 @@ export default function UserList() {
         rows={data}
         columns={columns}
         checkboxSelection
+        getRowId={(row) => row._id}
       />
     </div>
   );
