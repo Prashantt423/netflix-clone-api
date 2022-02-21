@@ -2,7 +2,6 @@ import ListItem from '../listitem/ListItem';
 import './list.scss';
 import Carousel from 'react-elastic-carousel';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 export default function List({ lists }) {
   const [windowDimensions, setWindowDimensions] = useState(

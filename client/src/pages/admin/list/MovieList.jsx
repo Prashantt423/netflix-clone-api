@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
-import { getLists } from '../../../contextApi/listContext/apiCalls';
-import { ListContext } from '../../../contextApi/listContext/ListContext';
+import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contextApi/authContext/AuthContext';
 import './Movielist.scss';
 // import { Publish } from "@material-ui/icons";

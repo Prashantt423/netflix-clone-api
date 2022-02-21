@@ -1,10 +1,8 @@
 import './productList.scss';
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { productRows } from '../../../dummyData';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import { useContext, useEffect } from 'react';
 import { MovieContext } from '../../../contextApi/movieContext/MovieContext';
 import {
   deleteMovie,

@@ -1,5 +1,5 @@
 import ArrowBackOutlined from '@mui/icons-material/ArrowBackOutlined';
-import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './watch.scss';
 
 export default function Watch() {

@@ -1,9 +1,7 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './product.scss';
-import Chart from '../../../components/dashboard/chart/Chart';
-import { productData } from '../../../dummyData';
 import Publish from '@mui/icons-material/Publish';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getOneMovie } from '../../../contextApi/movieContext/apiCalls';
 import { useContext } from 'react';
 import { MovieContext } from '../../../contextApi/movieContext/MovieContext';

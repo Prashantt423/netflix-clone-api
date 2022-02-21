@@ -4,7 +4,7 @@ import { MovieContext } from '../../../contextApi/movieContext/MovieContext';
 import storage from '../../../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { createMovie } from '../../../contextApi/movieContext/apiCalls';
-import PropTypes from 'prop-types';
+
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';

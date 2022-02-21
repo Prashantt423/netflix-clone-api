@@ -51,7 +51,7 @@ export default function InnerHomePage() {
       }
     };
     getStats();
-  }, [MONTHS]);
+  }, [MONTHS, user.accessToken]);
   return (
     <div className='dashBoardHomePage'>
       <div className='dashBoardHomePageWrapper'>
