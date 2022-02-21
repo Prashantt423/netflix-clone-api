@@ -21,7 +21,7 @@
     .left {
       display: flex;
       align-items: center;
-
+      font-size: 18px;
       .sm-slide {
         display: none;
         flex-direction: column;
@@ -107,6 +107,7 @@
       align-items: center;
       justify-content: space-between;
       width: 15%;
+      font-size: 18px;
       @media (max-width: 800px) {
         margin-left: 30%;
 
