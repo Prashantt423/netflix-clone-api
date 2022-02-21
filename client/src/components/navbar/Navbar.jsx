@@ -4,7 +4,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useContext, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contextApi/authContext/AuthContext';
 import { Logout } from '../../contextApi/authContext/apiCalls';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
