@@ -28,10 +28,10 @@ app.use(helmet());
 app.use(morgan('common'));
 
 // routes
-app.use('/api/auth', AuthRoute);
-app.use('/api/users', UserRoute);
-app.use('/api/movies', MovieRoute);
-app.use('/api/lists', ListRoute);
+app.use('/auth', AuthRoute);
+app.use('/users', UserRoute);
+app.use('/movies', MovieRoute);
+app.use('/lists', ListRoute);
 
 mongoose.connect(
   process.env.MONGO_URL,
