@@ -9,8 +9,10 @@ const AuthRoute = require('./routes/auth');
 const UserRoute = require('./routes/users');
 const MovieRoute = require('./routes/movies');
 const ListRoute = require('./routes/lists');
+const cors = require("cors");
 dotenv.config();
 
+app.use(cors());
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
